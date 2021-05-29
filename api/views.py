@@ -25,22 +25,27 @@ class UUIDViewSet(viewsets.ModelViewSet):
                 try:
                     uuid.uuid4()
                     uuid_string = str(uuid.uuid4())
-                    print(uuid_string)
+                    # print(uuid_string)
 
-                    # random_UUID_instance = Random_UUID(uuid=uuid_string)
-                    # random_UUID_instance.save()
-                    all_uuid_objects = Random_UUID.objects.all()
+                    random_UUID_instance = Random_UUID(uuid=uuid_string)
+                    random_UUID_instance.save()
+
+                    all_uuid_objects = Random_UUID.objects.all().order_by('-timestamp')
 
                     serializer = UUIDSerializers(all_uuid_objects, many=True)
                     data = serializer.data[:]
                     # print(len(data))
 
-                    for index, item in range(len(data)):
-                        for key in data[index]:
-                            print(data[index][key])
+                    data_dictionary = {}
+                    for index, item in enumerate(data):
+
+                        data_dictionary[data[index]
+                                        ["timestamp"]] = data[index]["uuid"]
+
+                    print(data_dictionary)
 
                     response = {'message': 'Hi 👋 WORKING!',
-                                'result': serializer.data}
+                                'result': data_dictionary}
 
                     # print(type(serializer.data.keys))
                     return Response(response, status=status.HTTP_200_OK)
