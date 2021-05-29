@@ -42,7 +42,7 @@ class UUIDViewSet(viewsets.ModelViewSet):
                         data_dictionary[data[index]
                                         ["timestamp"]] = data[index]["uuid"]
 
-                    print(data_dictionary)
+                    # print(data_dictionary)
 
                     response = {'message': 'Hi 👋 WORKING!',
                                 'result': data_dictionary}
