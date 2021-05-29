@@ -1,18 +1,11 @@
-from django.contrib.auth.models import User
+from .models import Random_UUID
 from rest_framework import serializers
 
 
-class UserRegistrationSerializers(serializers.ModelSerializer):
+class UUIDSerializers(serializers.ModelSerializer):
     # User registration  api data formatter.
     class Meta:  # pylint: disable=too-few-public-methods
         # Return default User options fields.
-        model = User
-        fields = (
-            'id',
-            'username',
-            'email',
-            'password'
-        )
-        extra_kwargs = {
-            'password': {'write_only': True, 'required': True}
-        }
+        # Return optional model loan record
+        model = Random_UUID
+        fields = '__all__'

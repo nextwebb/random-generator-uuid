@@ -30,7 +30,7 @@ DEBUG = config("DEBUG")
 # DEBUG = True
 
 # public dns  for the app's ec2 server
-ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
+ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
 # ALLOWED_HOSTS = []
 # print(DEBUG)
 if DEBUG:
@@ -50,14 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
-    # 3rd party apps
-    'rest_framework',
-    'rest_framework.authtoken',
     'api',
-    'allauth',
-    'rest_auth',
-    'rest_auth.registration',
 ]
 
 MIDDLEWARE = [
