@@ -24,7 +24,7 @@ class UUIDViewSet(viewsets.ModelViewSet):
             if request.user:
                 try:
                     uuid.uuid4()
-                    uuid_string = str(uuid.uuid4())
+                    uuid_string = str(uuid.uuid4().hex)
                     # print(uuid_string)
 
                     random_UUID_instance = Random_UUID(uuid=uuid_string)
